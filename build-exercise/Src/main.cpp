@@ -1,18 +1,23 @@
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
-
-#include <iostream>
 
 int main()
 {
-	std::cout << "Hello World!" << std::endl;
-	
 	if (!glfwInit())
-		std::cout << "GLFW error!" << std::endl;
+		return -1;
 
 	GLFWwindow* Window = glfwCreateWindow(1280, 720, "Hello World!", nullptr, nullptr);
+	if (!Window)
+		return -1;
 
+	glfwMakeContextCurrent(Window);
+	if (!gladLoadGL())
+		return -1;
+
+	glClearColor(0.4f, 0.0f, 1.0f, 1.0f);
 	while (!glfwWindowShouldClose(Window))
 	{
+		glClear(GL_COLOR_BUFFER_BIT);
 		glfwPollEvents();
 
 		glfwSwapBuffers(Window);
