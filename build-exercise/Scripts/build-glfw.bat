@@ -4,7 +4,7 @@
 set configuration=%1
 set platform=%2
 
-cd ../glfw
+cd ../Dependencies/glfw
 
 mkdir out
 cd out
